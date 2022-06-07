@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color:#FAFAFA;
+}
+#conta{
+    margin-top: 60px;
+}
+nav{
+    background-color: white;
+    
+}
+#nava{
+    
+    display: flex;
+    justify-content: center;
+}
+#search{
+    background-color: #FAFAFA;
+    cursor: text;
+}
+#space{
+   
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#post{
+    margin-top: 20px;
+    
+}
+.icons{
+   display: flex; 
+  gap: 300px;
+}
+.icon>i{
+    gap: 5px;
+}
+.card-text{
+    margin-left: 40px;
+       
+}
+.media{
+    display: flex;  
+
+}
+.prog{
+    margin-left: 40px;
+    margin-top: 23px;
+}
+.content-section{
+    margin-top: 20px;
+   
+
+    
+   
+}
+
+.user2{
+    margin-left: 9px;
+}
+.list li{
+    list-style: none;
+    display: inline;
+    color: #d8d6d6;
+}
+.list p{
+    color: #d8d6d6;
+
+}
+.img{
+    height: 67px;
+    width: 67px;
+    border-radius: 50%;
+    border: 3px solid rgb(146, 20, 131);
+    
+}
+#time{
+    font-size: 11px;
+    text-transform: uppercase;
+}
+.status{
+    display: flex;
+    gap: 10px;
+}
+.footer{
+    margin-top: 20px;
+}
+
+
+@media only screen and (max-width: 700px) {
+    #search{
+        
+        display: none;
+    }
+    #space{
+       
+        display: flex;
+        gap: 30px;
+        justify-content: space-evenly;
+    }
+    
+}
+@media only screen and (max-width: 1000px) {
+    #dash{
+        display: none;
+
+    }
+    #page{
+        display: none;
+    }
+}
