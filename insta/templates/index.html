@@ -1,6 +1,149 @@
 {% extends 'base.html' %}
-{% block content %}
-{{block.super}}
+{% if messages%} 
+{% for message in messages%}
+<div class="alert alert-{{ message.tags}}">{{message}}</div>
+{% endfor%} 
+{% endif%} 
 
-<h1>hello</h1>
-{% endblock %}
+{% block content %} 
+{{block.super}}
+<div class="container" id="conta">
+ 
+    <div class="row">
+      <div class="col-6" id="post">
+        {% for post in posts %}
+        <div class="card" style="width: 29.5rem">
+          <div class="status">
+            <div class="pt-3 pb-2 px-2">
+              <div>
+                <img class="img" src="../static/mw (copy).jpg" alt="img" />
+              </div>
+              <div>
+                <span>Zayn</span>
+              </div>
+            </div>
+            <div class="pt-3 pb-2 px-1">
+              <div>
+                <img class="img" src="../static/mw (copy).jpg" alt="img" />
+              </div>
+              <div>
+                <span>Nikita</span>
+              </div>
+            </div>
+            <div class="pt-3 pb-2 px-1">
+              <div>
+                <img
+                  class="img"
+                  src="{{post.author.profile.image.url}}"
+                  alt="img"
+                />
+              </div>
+              <div>
+                <span>{{post.author}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="width: 29.5rem; margin-top: 20px">
+          <div class="card-title" style="margin-top: 4px; margin-left: 10px">
+            <img
+              src="{{post.author.profile.image.url}}" class="rounded-circle border ml-3 mt-2 mr-3" alt="user img" width="35" height="35"/>
+              <a href="#" class="mt-4 user">{{post.author}}</a>
+              <a href="" style="float: right;font-size: large;font-weight: bold;color: black;margin-right: 20px;text-decoration: none; " > ...</a >
+          </div>
+          <div class="card-body">
+            <img src="{{post.image.url}}" class="card-img" alt="..." height="400px" />
+          </div>
+          <div class="card-text">
+            <div class="icons">
+              <div class="icon">
+                <a href="" style="color:red ;"><i  class="fa-regular fa-heart fa-lg">{{post.likes}}</i></a>
+                <i class="fa-regular fa-comment fa-lg"></i>
+                <i class="fa-regular fa-paper-plane fa-lg"></i>
+              </div>
+              <i class="fa-regular fa-bookmark fa-lg"></i>
+            </div>
+            <div class="likes">
+              <h5>
+                <a href="{% url 'post-detail' post.id %}"> {{post.name}}</a>
+              </h5>
+              Liked by <b>{{post.author.username}}</b> and <b>3</b> others
+            </div>
+            <p>{{img.profile}}{{img.image_caption}}</p>
+            <!-- xxxx -->
+            <span class="text-secondary ml-4 viewall"
+              ><a href="" >view all {{image.comments.count}} comment{{image.comments.count|pluralize}}</a ></span >
+            <div class="allcomments mb-4">
+              <div class="comment">
+                <div class="ml-4">
+                  <strong>Comment</strong>
+                  <span class="text-secondary">wow</span>
+                </div>
+              </div>
+
+              <!-- xxxx -->
+              <div class="text-muted" id="time">
+                {{post.created_at |timesince}} ago
+              </div>
+              
+            </div>
+            <hr>
+            <div class="card-footer"></div>
+          </div>
+        </div>
+      </div>
+        <div class="col-1"></div>
+        <div class="col-3 mt-4" id="dash">
+          <img src="{{post.author.profile.image.url}}" class="rounded-circle border ml-3 mt-2 mr-3" alt="user img" width="60" height="60" />
+          <a href="" class="user2">{{post.author}}</a>
+
+          <a href="#" style="float: right; margin-top: 20px"><b>Switch</b></a>
+          <div class="people mt-4">
+            <strong>Suggestions For You</strong>
+            <a href="#" style="float: right; color: black"><b><small>See All</small></b></a >
+            <div class="col">
+              <img src="../static/mw (copy).jpg" class="rounded-circle border ml-3 mt-2 mr-3" alt="user img" width="40" height="40"/>
+              <a href="" class="user2">username</a>
+              <a href="#" style="float: right; margin-top: 14px"><b>Follow</b></a >
+              <div class="text-muted" style="margin-left: 53px; margin-top: -15px; font-size: 14px" >
+                <small>Followed by _wandia_ + 7 more</small>
+              </div>
+            </div>
+            <div class="col">
+              <img src="../static/mw (copy).jpg" class="rounded-circle border ml-3 mt-2 mr-3" alt="user img" width="40" height="40" />
+              <a href="" class="user2">username</a>
+              <a href="#" style="float: right; margin-top: 14px" ><b>Follow</b></a >
+              <div
+                class="text-muted"
+                style="margin-left: 53px; margin-top: -15px; font-size: 14px" >
+                <small>Followed by _wandia_ + 7 more</small>
+              </div>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="list">
+              <li>About</li>
+              <li>Help</li>
+              <li>Press</li>
+              <li>Api</li>
+              <li>Jobs</li>
+              <li>Press</li>
+              <li>Terms</li>
+
+              <li>Locations</li>
+              <li>Languages</li>
+
+              <p>© 2022 INSTAGRAM FROM META</p>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+
+        <div class="col-1"></div>
+     </div>
+  
+</div>
+  {% endblock %}
+
+  
