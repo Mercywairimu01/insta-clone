@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{% load static%}
+{% block content %}
+<div class="container pt-5 mt-5">
+
+    {% if profile %}
+    <h4 class=" capitalize text-center">Found <b class="yellow-text">{{ user.username|length }}</b> posts matching user <b
+            class="yellow-text">{{ message }}</b> </h4>
+    {% else %}
+    <h4 class="text-center"> Found 0 posts for your search {{ message }}</h4>
+
+    <a class="d-block mx-auto" href="/">
+        <button class="btn btn-sm btn-info d-block mx-auto">Go Back</button>
+    </a>
+    {% endif %}
+
+ 
+    {% for post in posts %}
+   
+    <a style="color:black ;" href="{% url 'post-detail' post.id %}"><img src="{{post.image.url}}" alt="nope" width="350px" height="350px"></a>
+    {% endfor%}
+ 
+  </div>
+</div>
+{% endblock %}
