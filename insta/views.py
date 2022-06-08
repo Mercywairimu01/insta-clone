@@ -10,7 +10,7 @@ from django.views.generic import ListView,DetailView,CreateView, UpdateView, Del
 from django.contrib.auth.models import User
 
 # Create your views here.
-@login_required
+@login_required(login_url='login')
 def index(request):
     context = {
         'posts':Post.objects.all()

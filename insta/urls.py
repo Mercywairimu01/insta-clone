@@ -1,9 +1,9 @@
-from re import template
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from .views import PostListView,PostDetailView,PostCreateView,PostUpdateView,PostDeleteView
 from . import views
 urlpatterns = [
+    path('', views.index,name='index'),
     path('', PostListView.as_view(),name='index'),
     path('post/<int:pk>/', PostDetailView.as_view(template_name ='post_detail.html'), name='post-detail'),
     path('post/new/', PostCreateView.as_view(template_name ='post_form.html'), name='post-create'),
