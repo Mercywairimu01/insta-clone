@@ -1,52 +1,43 @@
 from django.test import TestCase
-from .models import Profile, Image
+from .models import Profile, Post
+from django.contrib.auth.models import User
 
 # Create your tests here.
-class ProfileTestClass(TestCase):
-    # Set up method
+class ProfileTest(TestCase):
+    '''
+    Profile model
+    '''
     def setUp(self):
-        self.profile = Profile(image='')
-        
-    # Testing instance
-    def test_instance(self):
-        self.assertTrue(isinstance(self.profile, Profile))
-        
-    # Testing Save Method
-    def test_save_method(self):
-        self.profile.save_profile()
-        profiles = Profile.objects.all()
-        self.assertEqual(len(profiles), 1)
+        self.user = User.objects.create(username='mishM')
+
+    def tearDown(self):
+        self.user.delete()
+
+    def test_new_profile(self):
+        self.assertIsInstance(self.user.profile, Profile)
+        self.user.save()
+        self.assertIsInstance(self.user.profile, Profile)
+
+class PostTest(TestCase): 
+    '''
+    post model tests
     
-    # Testing Delete Method
-    def test_delete_method(self):
-        self.profile.save_profile()
-        self.profile.delete_profile()
-        profiles = Profile.objects.all()
-        self.assertEqual(len(profiles), 0)
+    '''
+    def setUp(self):
+        self.test_user = User(username='Mercy', password='new123')
+        self.test_user.save()
+        
+
+        self.test_post = Post( author=self.test_user)
 
 
-    
-class PostTestClass(TestCase):
-    # Set up method
-    def setUp(self):
-        self.profile = Profile(image='')
-        self.profile.save_profile()
-        
-        self.image = self.profile.image_set.create(image='https://res.cloudinary.com/dzqbzqjqw/image/upload/v1559098981/image_qjqjqj.jpg', name='image', captions='This is a caption', likes=0, comments='This is a comment')
-        
-    # Testing instance
     def test_instance(self):
-         self.assertTrue(isinstance(self.image, Image))
-         
-    # Testing Save Method
-    def test_save_method(self):       
-        self.image.save_image()
-        images = Image.objects.all()
-        self.assertEqual(len(images), 1)
-        
-    # Testing Delete Method
-    def test_delete_method(self):       
-        self.image.save_image()
-        self.image.delete_image()
-        images = Image.objects.all()
-        self.assertEqual(len(images), 0)
+        self.assertTrue(isinstance(self.test_Post, Post))
+
+    def test_save(self):
+        self.test_post.save_Post()
+        self.assertEqual(len(Post.objects.all()),1)
+
+    def tearDown(self):
+        self.test_user.delete()
+        Post.objects.all().delete()

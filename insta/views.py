@@ -10,7 +10,7 @@ from django.views.generic import ListView,DetailView,CreateView, UpdateView, Del
 from django.contrib.auth.models import User
 
 # Create your views here.
-
+@login_required
 def index(request):
     context = {
         'posts':Post.objects.all()
@@ -35,6 +35,7 @@ def register(request):
 
 @login_required
 def profile(request):
+  
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.profile)
@@ -111,7 +112,7 @@ def SearchResults(request):
         searched_profile = Profile.search_by_profile(user_id.id)
         message = f"{search_term}"
         print(searched_profile)
-        posts = Post.objects.all()
+        posts = Post.objects.filter()
         return render(request, 'search.html', {"message": message, "profile": searched_profile,'posts':posts})
 
     else:

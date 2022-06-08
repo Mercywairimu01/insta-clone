@@ -43,17 +43,14 @@
            <a class="nav-link"style="color: black;" href="#">  <i class="fa-regular fa-heart fa-lg"></i></a>
           </li>
       
-      
+        {% if user.is_authenticated %}
         <div class="dropdown">
-       
-          {% for post in posts %}
           <button style="background-color: white; margin-top: -7px;" class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-           
             <div>
-              <img src="{{post.author.profile.image.url}}" class="rounded-circle border ml-3 mt-2  mr-3" alt="user img" width="30" height="30" >
+              <img src="{{user.profile.image.url}}" class="rounded-circle border ml-3 mt-2  mr-3" alt="user img" width="30" height="30" >
             </div>
           </button>
-          {%endfor%}
+          
          
           <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
               
@@ -67,6 +64,7 @@
           </ul>
           
         </div> 
+        {% endif %}
       </ul>
       </div>
     </div>

@@ -46,6 +46,15 @@ With all environment variables changed to suit your local copy of this repositor
 * [Python 3.8.10](https://www.python.org/) - Backend logic
 * [Postresql](https://www.postgresql.org/) - Database system
 
+## BDD
+| Behavior            | Input                         | Output                        | 
+| ------------------- | ----------------------------- | ----------------------------- |
+ | 
+Signup to the application | Click on `Signup` | A sign up page appears with a sign up form |
+|  Login to the site | Click on `Log in`  | Redirected to the login page with a login form |
+|  Search in the search field | Input keywords to be searched then click SEARCH | Search page is loaded and displays with the searched results |
+|Upload a post|click on `plus icon`| An upload page appears with an upload form containing different fields|
+|View profile|click `Profile`|Redirects to profile page
 ## Project Contribution or Development:
 
 To contribute to this project, please follow the following steps:
