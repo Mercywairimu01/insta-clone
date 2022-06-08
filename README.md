@@ -1,6 +1,6 @@
 # insta-clone
 This is a clone of the website for the popular photo app Instagram.
-![Site Screenshot](static/assets/insta-bg.png)
+![Site Screenshot](https://raw.githubusercontent.com/Mercywairimu01/insta-clone/main/insta/static/insta.png)
 
 ## Setup and Installation
 
